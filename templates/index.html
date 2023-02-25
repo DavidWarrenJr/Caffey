@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <title>Cafe & Wifi</title>
+    </head>
+    <body>
+        <!--        NAVBAR        -->
+        <section class="header">
+            <a href="index.html">Caffey</a>
+            <form action="{{ url_for('home') }}">
+                <label for="filter">Filter By</label>
+                <select name="filter" id="filter">
+                    <option value="name">Name</option>
+                    <option value="location">Location</option>
+                    <option value="sockets">Has Sockets</option>
+                    <option value="toilet">Has Toilet</option>
+                    <option value="wifi">Has Wifi</option>
+                    <option value="calls">Can Take Calls</option>
+                    <option value="seats">Seats</option>
+                    <option value="price">Price</option>
+                </select>
+                <button type="submit">Apply</button>
+            </form>
+            <!-- /# -->
+        </section>
+        <!-- /.header -->
+        <section class="details">
+            {% for cafe in cafes: %}
+            <section class="cafe">
+                <img src="{{ cafe.img_url }}" alt="">
+                <div class="cafe-info">
+                    <h2>{{ cafe.name }}</h2>
+                    <h3 class="cafe-info-location">{{ cafe.location }}</h3>
+                    <div class="cafe-features">
+                        <div class="feature">
+                            <h3>Sockets</h3>
+                            <p>
+                                {% if cafe.has_sockets == True: %}
+                                Yes
+                                {% else: %}
+                                No
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="feature">
+                            <h3>Toilet</h3>
+                            <p>
+                                {% if cafe.has_toilet == True: %}
+                                Yes
+                                {% else: %}
+                                No
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="feature">
+                            <h3>Wifi</h3>
+                            <p>
+                                {% if cafe.has_wifi == True: %}
+                                Yes
+                                {% else: %}
+                                No
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="feature">
+                            <h3>Take Calls</h3>
+                            <p>
+                                {% if cafe.can_take_calls == True: %}
+                                Yes
+                                {% else: %}
+                                No
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="feature">
+                            <h3>Seats</h3>
+                            <p>{{ cafe.seats }}</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Coffee Price</h3>
+                            <p>{{ cafe.coffee_price }}</p>
+                        </div>
+                        <!-- /.feature -->
+                    </div>
+                    <!-- /.cafe-features -->
+                </div>
+                <!-- /.cafe-info -->
+            </section>
+            <!-- /.cafe -->
+            {% endfor %}
+        </section>
+
+
+    </body>
+</html>

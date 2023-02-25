@@ -27,9 +27,7 @@ class Cafe(db.Model):
 @app.route("/")
 def home():
     all_cafes = db.session.query(Cafe).all()
-    for cafe in all_cafes:
-        print(cafe.to_dict())
-    return render_template("index.html")
+    return render_template("index.html", cafes=all_cafes)
 
 
 if __name__ == "__main__":
