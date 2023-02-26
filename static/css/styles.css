@@ -13,6 +13,7 @@ body {
 img {
     width: 300px;
     height: auto;
+    max-height: 300px;
     display: block;
 }
 
@@ -20,15 +21,25 @@ h1 {
     font-size: 2.2rem;
 }
 
+#filter-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
 .brand {
     color: #F23064;
 }
 
 .header {
-    height: 4rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.details {
+    margin: 0 auto;
+    width: 100%;
 }
 
 .cafe {
@@ -37,10 +48,10 @@ h1 {
 
 .cafe-container {
     display: flex;
-    padding-left: 15rem;
+    padding-left: 1rem;
     margin-top: 1rem;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 }
 
 
@@ -48,7 +59,7 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 10rem;
+    margin-left: 6rem;
 }
 
 .cafe-info a {
@@ -79,4 +90,36 @@ h1 {
 
 .cafe-features p {
     margin-top: 0.25rem;
+}
+
+@media (max-width: 975px) {
+    .cafe-features {
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .img-container {
+        display: flex;
+        align-items: center;
+        height: 100%:
+    }
+
+    .cafe-info-location {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .img-container {
+        display: none;
+    }
+
+    #filter-form {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .cafe-info {
+        margin: 0;
+    }
 }
