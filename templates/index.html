@@ -15,14 +15,55 @@
             <form action="{{ url_for('home') }}">
                 <label for="filter">Filter By</label>
                 <select name="filter" id="filter">
+                    <option value=""> --</option>
+
+                    {% if selected_filter == "name": %}
+                    <option value="name" selected>Name</option>
+                    {% else: %}
                     <option value="name">Name</option>
-                    <option value="location">Location</option>
-                    <option value="sockets">Has Sockets</option>
-                    <option value="toilet">Has Toilet</option>
-                    <option value="wifi">Has Wifi</option>
-                    <option value="calls">Can Take Calls</option>
+                    {% endif %}
+
+                    {% if selected_filter == "location": %}
+                    <option value="location" selected>Location</option>
+                    {% else: %}
+                    <option value="location" >Location</option>
+                    {% endif %}
+
+                    {% if selected_filter == "has_sockets": %}
+                    <option value="has_sockets" selected>Has Sockets</option>
+                    {% else: %}
+                    <option value="has_sockets">Has Sockets</option>
+                    {% endif %}
+
+                    {% if selected_filter == "has_toilet": %}
+                    <option value="has_toilet" selected>Has Toilet</option>
+                    {% else: %}
+                    <option value="has_toilet">Has Toilet</option>
+                    {% endif %}
+
+                    {% if selected_filter == "has_wifi": %}
+                    <option value="has_wifi" selected>Has Wifi</option>
+                    {% else: %}
+                    <option value="has_wifi">Has Wifi</option>
+                    {% endif %}
+
+                    {% if selected_filter == "can_take_calls": %}
+                    <option value="can_take_calls" selected>Take Calls</option>
+                    {% else: %}
+                    <option value="can_take_calls">Take Calls</option>
+                    {% endif %}
+
+                    {% if selected_filter == "seats": %}
+                    <option value="seats" selected>Seats</option>
+                    {% else: %}
                     <option value="seats">Seats</option>
-                    <option value="price">Price</option>
+                    {% endif %}
+
+                    {% if selected_filter == "coffee_price": %}
+                    <option value="coffee_price" selected>Coffe Price</option>
+                    {% else: %}
+                    <option value="coffee_price">Coffe Price</option>
+                    {% endif %}
                 </select>
                 <button type="submit">Apply</button>
             </form>
