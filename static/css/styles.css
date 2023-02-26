@@ -2,6 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    background-color: #F2F2F2;
+    color: darkblue;
 }
 
 img {
@@ -10,8 +16,15 @@ img {
     display: block;
 }
 
+h1 {
+    font-size: 2.2rem;
+}
+
+.brand {
+    color: #F23064;
+}
+
 .header {
-    background-color: gray;
     height: 4rem;
     display: flex;
     justify-content: space-around;
@@ -19,10 +32,13 @@ img {
 }
 
 .cafe {
+    background-color: #A9EBFF;
+}
+
+.cafe-container {
     display: flex;
     padding-left: 15rem;
     margin-top: 1rem;
-    background-color: lightgray;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
 }
@@ -35,9 +51,24 @@ img {
     margin-left: 10rem;
 }
 
+.cafe-info a {
+    width: fit-content;
+    background-color: #f2f2f2;
+    color: darkblue;
+    padding: 0.25rem 1rem;
+    border-radius: 12px;
+    margin-top: 0.25rem;
+    font: inherit;
+}
+
+.cafe-info h2 {
+    color: #F23064;
+}
+
 .cafe-info-location {
     margin-top: 0.5rem;
 }
+
 
 .cafe-features {
     margin-top: 1rem;

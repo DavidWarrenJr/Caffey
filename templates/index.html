@@ -11,7 +11,8 @@
     <body>
         <!--        NAVBAR        -->
         <section class="header">
-            <a href="index.html">Caffey</a>
+            <a href="{{ url_for('home') }}"><h1 class="brand">Caffey</h1></a>
+
             <form action="{{ url_for('home') }}">
                 <label for="filter">Filter By</label>
                 <select name="filter" id="filter">
@@ -55,7 +56,7 @@
                     {% if sort_by == "location": %}
                     <option value="location" selected>Location</option>
                     {% else: %}
-                    <option value="location" >Location</option>
+                    <option value="location">Location</option>
                     {% endif %}
 
                     {% if sort_by == "seats": %}
@@ -78,65 +79,68 @@
             {% for cafe in cafes: %}
 
             <section class="cafe">
-                <img src="{{ cafe.img_url }}" alt="">
-                <div class="cafe-info">
-                    <h2>{{ cafe.name }}</h2>
-                    <h3 class="cafe-info-location">{{ cafe.location }}</h3>
-                    <a href="{{ cafe.map_url }}" target="_blank">Map</a>
-                    <div class="cafe-features">
-                        <div class="feature">
-                            <h3>Sockets</h3>
-                            <p>
-                                {% if cafe.has_sockets == True: %}
-                                Yes
-                                {% else: %}
-                                No
-                                {% endif %}
-                            </p>
+                <div class="cafe-container">
+                    <img src="{{ cafe.img_url }}" alt="">
+                    <div class="cafe-info">
+                        <h2>{{ cafe.name }}</h2>
+                        <h3 class="cafe-info-location">{{ cafe.location }}</h3>
+                        <a class="map-button" href="{{ cafe.map_url }}" target="_blank">Map</a>
+                        <div class="cafe-features">
+                            <div class="feature">
+                                <h3>Sockets</h3>
+                                <p>
+                                    {% if cafe.has_sockets == True: %}
+                                    Yes
+                                    {% else: %}
+                                    No
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="feature">
+                                <h3>Toilet</h3>
+                                <p>
+                                    {% if cafe.has_toilet == True: %}
+                                    Yes
+                                    {% else: %}
+                                    No
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="feature">
+                                <h3>Wifi</h3>
+                                <p>
+                                    {% if cafe.has_wifi == True: %}
+                                    Yes
+                                    {% else: %}
+                                    No
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="feature">
+                                <h3>Take Calls</h3>
+                                <p>
+                                    {% if cafe.can_take_calls == True: %}
+                                    Yes
+                                    {% else: %}
+                                    No
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <div class="feature">
+                                <h3>Seats</h3>
+                                <p>{{ cafe.seats }}</p>
+                            </div>
+                            <div class="feature">
+                                <h3>Coffee Price</h3>
+                                <p>{{ cafe.coffee_price }}</p>
+                            </div>
+                            <!-- /.feature -->
                         </div>
-                        <div class="feature">
-                            <h3>Toilet</h3>
-                            <p>
-                                {% if cafe.has_toilet == True: %}
-                                Yes
-                                {% else: %}
-                                No
-                                {% endif %}
-                            </p>
-                        </div>
-                        <div class="feature">
-                            <h3>Wifi</h3>
-                            <p>
-                                {% if cafe.has_wifi == True: %}
-                                Yes
-                                {% else: %}
-                                No
-                                {% endif %}
-                            </p>
-                        </div>
-                        <div class="feature">
-                            <h3>Take Calls</h3>
-                            <p>
-                                {% if cafe.can_take_calls == True: %}
-                                Yes
-                                {% else: %}
-                                No
-                                {% endif %}
-                            </p>
-                        </div>
-                        <div class="feature">
-                            <h3>Seats</h3>
-                            <p>{{ cafe.seats }}</p>
-                        </div>
-                        <div class="feature">
-                            <h3>Coffee Price</h3>
-                            <p>{{ cafe.coffee_price }}</p>
-                        </div>
-                        <!-- /.feature -->
+                        <!-- /.cafe-features -->
                     </div>
-                    <!-- /.cafe-features -->
+                    <!-- /.cafe-info -->
                 </div>
-                <!-- /.cafe-info -->
+                <!-- /.cafe-container -->
             </section>
             <!-- /.cafe -->
             {% endfor %}
