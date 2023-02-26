@@ -25,23 +25,21 @@ class Cafe(db.Model):
         return {column.name: getattr(self, column.name) for column in self.__table__.columns}
 
 
-def apply_filter(filter, cafes) -> list:
-    if not filter:
-        filter = "name"
-
-    cafes.sort(key=attrgetter(filter))
-    return cafes
-
-
 @app.route("/")
 def home():
     all_cafes = db.session.query(Cafe).all()
 
-    filter = request.args.get("filter")
-    filtered_cafes = apply_filter(filter=filter, cafes=all_cafes)
+    selected_filter = request.args.get("filter")
+    if selected_filter:
+        filtered_cafes = [cafe for cafe in all_cafes if getattr(cafe, selected_filter)]
+    else:
+        filtered_cafes = all_cafes
 
+    sort_by = request.args.get("sort")
+    if sort_by:
+        filtered_cafes.sort(key=attrgetter(sort_by))
 
-    return render_template("index.html", cafes=all_cafes, selected_filter=filter)
+    return render_template("index.html", cafes=filtered_cafes, selected_filter=selected_filter, sort_by=sort_by)
 
 
 if __name__ == "__main__":

@@ -17,18 +17,6 @@
                 <select name="filter" id="filter">
                     <option value=""> --</option>
 
-                    {% if selected_filter == "name": %}
-                    <option value="name" selected>Name</option>
-                    {% else: %}
-                    <option value="name">Name</option>
-                    {% endif %}
-
-                    {% if selected_filter == "location": %}
-                    <option value="location" selected>Location</option>
-                    {% else: %}
-                    <option value="location" >Location</option>
-                    {% endif %}
-
                     {% if selected_filter == "has_sockets": %}
                     <option value="has_sockets" selected>Has Sockets</option>
                     {% else: %}
@@ -52,14 +40,31 @@
                     {% else: %}
                     <option value="can_take_calls">Take Calls</option>
                     {% endif %}
+                </select>
 
-                    {% if selected_filter == "seats": %}
+                <label for="sort">Sort By</label>
+                <select name="sort" id="sort">
+                    <option value="">--</option>
+
+                    {% if sort_by == "name": %}
+                    <option value="name" selected>Name</option>
+                    {% else: %}
+                    <option value="name">Name</option>
+                    {% endif %}
+
+                    {% if sort_by == "location": %}
+                    <option value="location" selected>Location</option>
+                    {% else: %}
+                    <option value="location" >Location</option>
+                    {% endif %}
+
+                    {% if sort_by == "seats": %}
                     <option value="seats" selected>Seats</option>
                     {% else: %}
                     <option value="seats">Seats</option>
                     {% endif %}
 
-                    {% if selected_filter == "coffee_price": %}
+                    {% if sort_by == "coffee_price": %}
                     <option value="coffee_price" selected>Coffe Price</option>
                     {% else: %}
                     <option value="coffee_price">Coffe Price</option>
@@ -67,11 +72,11 @@
                 </select>
                 <button type="submit">Apply</button>
             </form>
-            <!-- /# -->
         </section>
         <!-- /.header -->
         <section class="details">
             {% for cafe in cafes: %}
+
             <section class="cafe">
                 <img src="{{ cafe.img_url }}" alt="">
                 <div class="cafe-info">
